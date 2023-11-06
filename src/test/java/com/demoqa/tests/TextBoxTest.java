@@ -1,26 +1,32 @@
 package com.demoqa.tests;
 
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Configuration.baseUrl;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 
 public class TextBoxTest extends TestBase {
     @Test
     void successfulTextBoxTest() {
-        open(baseUrl + "/text-box");
 
-        $("#userName").setValue("Jeffrey Simpson");
-        $("#userEmail").setValue("jeff@essenger.net");
-        $("#currentAddress").setValue("Sanctum Eternal");
-        $("#permanentAddress").setValue("K-PAX");
-        $("#submit").pressEnter();
+        String fakerFullName = faker.name().fullName();
+        String fakerUserEmail = faker.internet().emailAddress();
+        String fakerCurrentAddress = faker.address().secondaryAddress();
+        String fakerPermanentAddress = faker.address().fullAddress();
 
-        $("#output #name").shouldHave(text("Name:Jeffrey Simpson"));
-        $("#output #email").shouldHave(text("Email:jeff@essenger.net"));
-        $("#output #currentAddress").shouldHave(text("Current Address :Sanctum Eternal"));
-        $("#output #permanentAddress").shouldHave(text("Permananet Address :K-PAX"));
+        step("Open DEMOQA Text Box page", () -> {
+            textBoxPage.openTextBoxPage();
+        });
+        step("Fill in Text Box form", () -> {
+            textBoxPage.setFullName(fakerFullName)
+                       .setUserEmail(fakerUserEmail)
+                       .setCurrentAddress(fakerCurrentAddress)
+                       .setPermanentAddress(fakerPermanentAddress)
+                       .pressSubmitButton();
+        });
+        step("Check output meanings", () -> {
+            textBoxPage.checkOutputName(fakerFullName)
+                       .checkOutputEmail(fakerUserEmail)
+                       .checkOutputCurrentAddress(fakerCurrentAddress)
+                       .checkOutputPermanentAddress(fakerPermanentAddress);
+        });
     }
 }

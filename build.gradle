@@ -1,8 +1,9 @@
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
-group = 'guru.qa'
+group = 'com.demoqa'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -11,17 +12,36 @@ repositories {
 
 def selenideVersion = "6.19.1",
     jUnitJupiterVersion = "5.10.0",
-    slf4jSimpleVersion = "2.0.9"
+    allureSelenideVersion = "2.24.0",
+    slf4jSimpleVersion = "2.0.9",
+    ownerVersion = "1.0.12",
+    javaFakerVersion = "1.0.2"
 
 dependencies {
     testImplementation(
             "com.codeborne:selenide:$selenideVersion",
             "org.junit.jupiter:junit-jupiter:$jUnitJupiterVersion",
-            "org.slf4j:slf4j-simple:$slf4jSimpleVersion")
+            "io.qameta.allure:allure-selenide:$allureSelenideVersion",
+            "org.slf4j:slf4j-simple:$slf4jSimpleVersion",
+            "org.aeonbits.owner:owner:$ownerVersion",
+            "com.github.javafaker:javafaker:$javaFakerVersion")
 }
 
+allure {
+    report {
+        version.set(allureSelenideVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureSelenideVersion)
+            }
+        }
+    }
+}
 
-tasks.withType(Test).configureEach {
+tasks.withType(Test) {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 
@@ -33,6 +53,30 @@ tasks.withType(Test).configureEach {
     }
 }
 
+task login_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("login")
+    }
+}
+
+task books_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("books")
+    }
+}
+
+task positive_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("positive")
+    }
+}
+
+task negative_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("negative")
+    }
+}
+
 compileJava {
     options.encoding = 'UTF-8'
 }
@@ -40,3 +84,5 @@ compileJava {
 compileTestJava {
     options.encoding = 'UTF-8'
 }
+
+

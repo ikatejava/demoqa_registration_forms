@@ -1,5 +1,4 @@
 package com.demoqa.tests;
-
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
@@ -26,8 +25,8 @@ public class PracticeFormTest extends TestBase {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1990");
         $(".react-datepicker__month-select").selectOption("January");
-
         $("[aria-label='Choose Thursday, January 25th, 1990']").click();
+
         $("#subjectsInput").setValue("a").setValue("Arts").pressEnter();
         $("#subjectsInput").setValue("b").setValue("Biology").pressEnter();
         $("#subjectsInput").setValue("c").setValue("Chemistry").pressEnter();
