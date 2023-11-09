@@ -20,8 +20,8 @@ public class TestData extends TestBase {
 
     userBirthMonth = faker.options().option("January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"),
-            userBirthYear = String.valueOf(random.nextInt(1900, 2023)),
-            userBirthDay = String.format("%02d", faker.number().numberBetween(1, 28)),
+    userBirthYear = String.valueOf(faker.number().numberBetween(1900, 2023)),
+    userBirthDay = String.format("%02d", faker.number().numberBetween(1, 28)),
 
     userSubject = faker.options().option("Accounting", "Arts", "Biology", "Chemistry", "Civics",
             "Commerce", "Computer Science", "Economics", "English",
