@@ -15,22 +15,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
+import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-    RegistrationPage registrationPage = new RegistrationPage();
     TextBoxPage textBoxPage = new TextBoxPage();
+    RegistrationPage registrationPage = new RegistrationPage();
 
-    Faker faker = new Faker();
+    static Faker faker = new Faker();
+    static Random random = new Random();
 
     static WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
 
     @BeforeAll
     static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         Configuration.pollingInterval = 400;
         Configuration.timeout = 4000;
         Configuration.baseUrl = config.baseUrl();

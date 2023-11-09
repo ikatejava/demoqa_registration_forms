@@ -1,7 +1,6 @@
 package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.demoqa.tests.TextBoxTest;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Configuration.baseUrl;
@@ -11,61 +10,61 @@ import static com.codeborne.selenide.Selenide.open;
 public class TextBoxPage {
 
     SelenideElement
-        fullName = $("#userName"),
-        userEmail = $("#userEmail"),
-        currentAddress = $("#currentAddress"),
-        permanentAddress = $("#permanentAddress"),
-        submitButton = $("#submit"),
-        outputName = $("#output #name"),
-        outputEmail = $("#output #email"),
-        outputCurrentAddress = $("#output #currentAddress"),
-        outputPermanentAddress = $("#output #permanentAddress");
+            fullName = $("#userName"),
+            email = $("#userEmail"),
+            currentAddress = $("#currentAddress"),
+            permanentAddress = $("#permanentAddress"),
+            submitButton = $("#submit"),
+            outputName = $("#output #name"),
+            outputEmail = $("#output #email"),
+            outputCurrentAddress = $("#output #currentAddress"),
+            outputPermanentAddress = $("#output #permanentAddress");
 
     public void openTextBoxPage() {
         open(baseUrl + "/text-box");
     }
 
-    public TextBoxPage setFullName(String fakerFullName) {
-        fullName.setValue(fakerFullName);
+    public TextBoxPage setFullName(String userFullName) {
+        fullName.setValue(userFullName);
         return this;
     }
 
-    public TextBoxPage setUserEmail(String fakerUserEmail) {
-        userEmail.setValue(fakerUserEmail);
+    public TextBoxPage setEmail(String userEmail) {
+        email.setValue(userEmail);
         return this;
     }
 
-    public TextBoxPage setCurrentAddress(String fakerCurrentAddress) {
-        currentAddress.setValue(fakerCurrentAddress);
+    public TextBoxPage setCurrentAddress(String userCurrentAddress) {
+        currentAddress.setValue(userCurrentAddress);
         return this;
     }
 
-    public TextBoxPage setPermanentAddress(String fakerPermanentAddress) {
-        permanentAddress.setValue(fakerPermanentAddress);
+    public TextBoxPage setPermanentAddress(String userPermanentAddress) {
+        permanentAddress.setValue(userPermanentAddress);
         return this;
     }
 
     public void pressSubmitButton() {
+
         submitButton.pressEnter();
     }
 
-    public TextBoxPage checkOutputName(String fakerFullName) {
-        outputName.shouldHave(text(fakerFullName));
+    public TextBoxPage checkOutputName(String userFullName) {
+        outputName.shouldHave(text(userFullName));
         return this;
     }
 
-    public TextBoxPage checkOutputEmail(String fakerUserEmail) {
-        outputEmail.shouldHave(text(fakerUserEmail));
+    public TextBoxPage checkOutputEmail(String userEmail) {
+        outputEmail.shouldHave(text(userEmail));
         return this;
     }
 
-    public TextBoxPage checkOutputCurrentAddress(String fakerCurrentAddress) {
-        outputCurrentAddress.shouldHave(text(fakerCurrentAddress));
+    public TextBoxPage checkOutputCurrentAddress(String userCurrentAddress) {
+        outputCurrentAddress.shouldHave(text(userCurrentAddress));
         return this;
     }
 
-    public TextBoxPage checkOutputPermanentAddress(String fakerPermanentAddress) {
-        outputPermanentAddress.shouldHave(text(fakerPermanentAddress));
-        return this;
+    public void checkOutputPermanentAddress(String userPermanentAddress) {
+        outputPermanentAddress.shouldHave(text(userPermanentAddress));
     }
 }
