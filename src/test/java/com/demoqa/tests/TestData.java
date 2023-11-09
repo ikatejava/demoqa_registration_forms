@@ -3,15 +3,15 @@ package com.demoqa.tests;
 public class TestData extends TestBase {
     public static String
 
-            userFullName = faker.name().fullName(),
+    userFullName = faker.name().fullName(),
 
     userEmail = faker.internet().emailAddress(),
 
     userCurrentAddress = faker.address().secondaryAddress(),
-            userPermanentAddress = faker.address().fullAddress(),
+    userPermanentAddress = faker.address().fullAddress(),
 
     userFirstName = faker.name().firstName(),
-            userLastName = faker.name().lastName(),
+    userLastName = faker.name().lastName(),
 
 
     userGender = faker.options().option("Male", "Female", "Other"),
@@ -24,8 +24,8 @@ public class TestData extends TestBase {
     userBirthDay = String.format("%02d", faker.number().numberBetween(1, 28)),
 
     userSubject = faker.options().option("Accounting", "Arts", "Biology", "Chemistry", "Civics",
-            "Commerce", "Computer Science", "Economics", "English",
-            "Hindi", "History", "Maths", "Physics", "Social Studies"),
+                                                 "Commerce", "Computer Science", "Economics", "English",
+                                                 "Hindi", "History", "Maths", "Physics", "Social Studies"),
 
     userHobby = faker.options().option("Sports", "Reading", "Music"),
 

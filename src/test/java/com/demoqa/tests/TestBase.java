@@ -15,7 +15,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
-import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -23,10 +22,7 @@ public class TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
     RegistrationPage registrationPage = new RegistrationPage();
-
     static Faker faker = new Faker();
-    static Random random = new Random();
-
     static WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
 
     @BeforeAll
