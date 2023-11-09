@@ -36,19 +36,21 @@ public class TestData extends TestBase {
     userState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
 
     randomNCRCity = faker.options().option("Delhi", "Gurgaon", "Noida"),
-
     randomUttarPradeshCity = faker.options().option("Agra", "Lucknow", "Merrut"),
-            randomHaryanaCity = faker.options().option("Karnal", "Panipat"),
-            randomRajasthanCity = faker.options().option("Jaipur", "Jaiselmer");
+    randomHaryanaCity = faker.options().option("Karnal", "Panipat"),
+    randomRajasthanCity = faker.options().option("Jaipur", "Jaiselmer");
 
     static String userCity;
 
     public static String setUserRandomCity(String userRandomState) {
-        switch (userRandomState) {
-            case "NCR" -> userCity = randomNCRCity;
-            case "Uttar Pradesh" -> userCity = randomUttarPradeshCity;
-            case "Haryana" -> userCity = randomHaryanaCity;
-            case "Rajasthan" -> userCity = randomRajasthanCity;
+        if (userRandomState == "NCR") {
+            userCity = randomNCRCity;
+        } else if (userRandomState == "Uttar Pradesh") {
+            userCity = randomUttarPradeshCity;
+        } else if (userRandomState == "Haryana") {
+            userCity = randomHaryanaCity;
+        } else {
+            userCity = randomRajasthanCity;
         }
         return userCity;
     }
