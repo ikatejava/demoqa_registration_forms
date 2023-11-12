@@ -10,5 +10,4 @@ public class VerifyResultsComponent {
         $(".table-responsive").$(byText(key))
                 .sibling(0).shouldHave(text(value));
     }
-
 }

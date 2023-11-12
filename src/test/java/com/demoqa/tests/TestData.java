@@ -19,7 +19,7 @@ public class TestData extends TestBase {
     userMobileNumber = faker.phoneNumber().subscriberNumber(10),
 
     userBirthMonth = faker.options().option("January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"),
+                                                    "July", "August", "September", "October", "November", "December"),
     userBirthYear = String.valueOf(faker.number().numberBetween(1900, 2023)),
     userBirthDay = String.format("%02d", faker.number().numberBetween(1, 28)),
 

@@ -45,7 +45,6 @@ public class TextBoxPage {
     }
 
     public void pressSubmitButton() {
-
         submitButton.pressEnter();
     }
 
